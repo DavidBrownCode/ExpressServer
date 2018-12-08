@@ -12,7 +12,7 @@ app.listen(app.get('port'), function(){
     console.log('Express start on http://localhost' + app.get('port'));
 });
 
-/* //////////////////////*/
+/* //////////////////////
 
 var express = require('express');
 var config = require('./config');
@@ -28,4 +28,3 @@ console.log("HTTP Server listening on port: %d, in %s mode", port, app.get('env'
 });
 
 /*  /////////////////////  */
-
