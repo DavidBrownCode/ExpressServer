@@ -2,12 +2,13 @@ var http = require('http');
 var express = require('express');
 var app = express();
 app.set('port', process.env.PORT || 3000);
-app.get('/',function(req,res){
-    res.send('Hello World!');
-});
 
 app.use(function(req,res,next){
     console.log('Request from ' + req.ip);
+});
+
+app.get('/',function(req,res){
+    res.send('Hello World!');
 });
 
 /*-app.listen(app.get('port'), function(){
