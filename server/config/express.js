@@ -36,7 +36,11 @@ app.use(function (req, res, next) {
 console.log('Request from ' + req.connection.remoteAddress);
 next();
 });
-
+app.use(morgan('dev'));
+app.use(body-parser.urlencoded({
+    extended:true
+}));
+app.use(body-parser.json());
 app.use(express.static(config.root + '/public'));
 app.use(function (req, res) {
 res.type('text/plan');
