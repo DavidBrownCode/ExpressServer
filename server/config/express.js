@@ -29,7 +29,7 @@ app.get('/', function(req, res){
 app.listen(app.get('port'), function(){
     console.log('Express start on http://localhost' + app.get('port'));
 });*/
-/*
+
 var express = require('express');
 module.exports = function (app, config) {
 app.use(function (req, res, next) {
@@ -50,8 +50,8 @@ res.status(500);
 res.send('500 Sever Error');
 });
 console.log("Starting application");
-};*/
-
+};
+/*
 var express = require('express');
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -60,4 +60,4 @@ res.send('Hello World!');
 });
 app.listen(app.get('port'), function(){
 console.log('Express started on http://localhost:' + app.get('port'));
-});
+});*/
