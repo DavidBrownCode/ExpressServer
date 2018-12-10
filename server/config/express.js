@@ -30,13 +30,25 @@ app.listen(app.get('port'), function(){
     console.log('Express start on http://localhost' + app.get('port'));
 });*/
 
+//requires
 var express = require('express');
+var morgan = require('morgan');
+var logger = require('./logger');
+var bodyParser = require('body-parser');
+var glob = require('glob');
+var bluebird = require('bluebird');
+var mongoose = require('mongoose');
+
+//add in after testing
+var cors = require('cors');
+
 module.exports = function (app, config) {
-app.use(function (req, res, next) {
+//older code    
+/*app.use(function (req, res, next) {
 console.log('Request from ' + req.connection.remoteAddress);
 next();
 });
-app.use(morgan('dev'));
+app.use(morgan('dev'));*/
 app.use(body-parser.urlencoded({
     extended:true
 }));
