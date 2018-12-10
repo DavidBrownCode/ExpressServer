@@ -23,23 +23,23 @@ module.exports = function(grunt){
                         },
         }
     });    
+
+
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-nodemon');
+    grunt.loadNpmTasks('grunt-env');
+
+    grunt.registerTask('default', [
+    'env:dev',
+    //added to original copied text
+    'nodemon',
+    'jshint',
+    ]);
+
+    grunt.registerTask('production', [
+    'env:production',
+    //added to original copied text
+    'nodemon'
+]);
+
 };
-
-grunt.loadNpmTasks('grunt-contrib-jshint');
-grunt.loadNpmTasks('grunt-contrib-nodemon');
-grunt.loadNpmTasks('grunt-env');
-
-grunt.loadNpmTasks('grunt-env');
-
-grunt.registerTask('default', [
-'env:dev',
-//added to original copied text
-'nodemon',
-'jshint',
-]);
-
-grunt.registerTask('production', [
-'env:production',
-//added to original copied text
-'nodemon'
-]);
