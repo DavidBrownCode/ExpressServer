@@ -49,9 +49,14 @@ console.log('Request from ' + req.connection.remoteAddress);
 next();
 });
 app.use(morgan('dev'));*/
-app.use(body-parser.urlencoded({
-    extended:true
-}));
+
+logger.log('info', "Loading Mongoose functionality");
+mongoose.Promise = bluebird;
+mongoose.connect(config.db);
+var db = mongoose.connection;
+db.on('error', function () {
+throw new Error('unable to connect to database at ' + config.db);
+});
 app.use(body-parser.json());
 app.use(express.static(config.root + '/public'));
 app.use(function (req, res) {
