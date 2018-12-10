@@ -43,7 +43,7 @@ var config = require('./config/config');
 
 var app = express();
 
-var port = process.env.port || 3000;//change to 5000 when connecting to logger
+var port = process.env.port || 5000;//change to 5000 when connecting to logger.log; keep at 3000 for console.log
 
 require('./config/express')(app, config);
 
