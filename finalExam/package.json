@@ -1,0 +1,24 @@
+{
+  "name": "finalexam",
+  "version": "1.0.0",
+  "description": "final Exam, I finally get to play with my kids",
+  "main": "index.js",
+  "scripts": {
+    "test": "ahhhhh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "aureliahttps://github.com/DavidBrownCode/ExpressServer.git/finalExam"
+  },
+  "keywords": [
+    "final",
+    "Exam",
+    "810",
+    "solutions",
+    "in",
+    "web",
+    "development"
+  ],
+  "author": "David A Brown",
+  "license": "ISC"
+}
