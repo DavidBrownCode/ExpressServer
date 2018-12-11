@@ -34,4 +34,4 @@ query.sort(req.query.order)
 .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
 }));
 
-//add schema .json files
+//add schema .json files (Help Ticket API)
