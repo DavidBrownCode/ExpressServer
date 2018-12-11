@@ -36,6 +36,11 @@ router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
     query.sort(req.query.order)
     .populate({path: 'personId', model: 'User', select: 'lastName firstName fullName'} )
     .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
+/*
+    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
+    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
+    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
+*/
 }));
 
 //add schema .json files (Help Ticket API)
