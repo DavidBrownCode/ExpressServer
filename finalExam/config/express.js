@@ -17,8 +17,8 @@ module.exports = function (app, config){
         res.status(404);
 
     });
-};*/
-/*var app = express();
+};
+var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
@@ -75,9 +75,9 @@ app.use(morgan('dev'));*/
         res.status(500).send('500 Sever Error');
         }
         });
-//changed in authenication/refine the error... from below
+/*changed in authenication/refine the error... from below
    
-/*app.use(function (err, req, res, next) {
+app.use(function (err, req, res, next) {
         console.error(err.stack);
         res.type('text/plan');
         if(err.status){

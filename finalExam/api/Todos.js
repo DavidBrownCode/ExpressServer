@@ -1,6 +1,8 @@
+var requireAuth = passport.authenticate('jwt', { session: false });
 //Get todos
-router.get('/helpTickets', asyncHandler(async (req, res) => {
-    logger.log('info','Get all HelpTickets');
+//added in from authentication lessons
+router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
+    logger.log('info', 'Get all ToDos');
     let query = HelpTicket.find();
 query.sort(req.query.order)
     await query.exec().then(result => {
@@ -9,8 +11,9 @@ query.sort(req.query.order)
 }));
 
 //add todos
-router.get('/helpTickets', asyncHandler(async (req, res) => {
-    logger.log('info','Get all HelpTickets');
+//added in from authentication lessons
+router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
+    logger.log('info', 'Get all ToDos');
     let query = HelpTicket.find();
 query.sort(req.query.order)
 if(req.query.status){
@@ -26,8 +29,9 @@ query.where('status').eq(req.query.status);
 }));
 
 //Populate todos
-router.get('/helpTickets', asyncHandler(async (req, res) => {
-    logger.log('info','Get all HelpTickets');
+//added in from authentication lessons
+router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
+    logger.log('info', 'Get all ToDos');
     let query = HelpTicket.find();
 query.sort(req.query.order)
 .populate({path: 'personId', model: 'User', select: 'lastName firstName fullName'} )
@@ -35,3 +39,7 @@ query.sort(req.query.order)
 }));
 
 //add schema .json files (Help Ticket API)
+
+/*added in from authentication lessons
+router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
+    logger.log('info', 'Get all ToDos');*/
