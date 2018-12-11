@@ -74,8 +74,10 @@ app.use(morgan('dev'));*/
         } else {
         res.status(500).send('500 Sever Error');
         }
-        });//changed in authenication/refine the error... from below
-    /*app.use(function (err, req, res, next) {
+        });
+//changed in authenication/refine the error... from below
+   
+/*app.use(function (err, req, res, next) {
         console.error(err.stack);
         res.type('text/plan');
         if(err.status){
@@ -85,8 +87,10 @@ app.use(morgan('dev'));*/
     res.send('500 Sever Error');
     });
     console.log("Starting application");
-};*/
-/*
+};
+
+These are separate notes---------
+
 var express = require('express');
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -95,4 +99,6 @@ res.send('Hello World!');
 });
 app.listen(app.get('port'), function(){
 console.log('Express started on http://localhost:' + app.get('port'));
-});*/
+});
+
+*/
