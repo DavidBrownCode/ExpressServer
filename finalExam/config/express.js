@@ -50,28 +50,42 @@ next();
 });
 app.use(morgan('dev'));*/
 
-logger.log('info', "Loading Mongoose functionality");
-mongoose.Promise = bluebird;
-mongoose.connect(config.db);
-var db = mongoose.connection;
-db.on('error', function () {
-throw new Error('unable to connect to database at ' + config.db);
-});
-app.use(body-parser.json());
-app.use(express.static(config.root + '/public'));
-app.use(function (req, res) {
-res.type('text/plan');
-res.status(404);
-res.send('404 Not Found');
-});
-app.use(function (err, req, res, next) {
-console.error(err.stack);
-res.type('text/plan');
-res.status(500);
-res.send('500 Sever Error');
-});
-console.log("Starting application");
-};
+    logger.log('info', "Loading Mongoose functionality");
+    mongoose.Promise = bluebird;
+    mongoose.connect(config.db);
+    var db = mongoose.connection;
+    db.on('error', function () {
+        throw new Error('unable to connect to database at ' + config.db);
+    });
+    app.use(body-parser.json());
+    app.use(express.static(config.root + '/public'));
+    app.use(function (req, res) {
+        res.type('text/plan');
+        res.status(404);
+        res.send('404 Not Found');
+    });
+
+    app.use(function (err, req, res, next) {
+        console.log(err)
+        if (process.env.NODE_ENV !== 'test') logger.log(err.stack,'error');
+        res.type('text/plan');
+        if(err.status){
+        res.status(err.status).send(err.message);
+        } else {
+        res.status(500).send('500 Sever Error');
+        }
+        });//changed in authenication/refine the error... from below
+    /*app.use(function (err, req, res, next) {
+        console.error(err.stack);
+        res.type('text/plan');
+        if(err.status){
+            res.status(err.status).send(err.message);
+    }
+    res.status(500);
+    res.send('500 Sever Error');
+    });
+    console.log("Starting application");
+};*/
 /*
 var express = require('express');
 var app = express();
