@@ -3,7 +3,7 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 //added in from authentication lessons
 router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
     logger.log('info', 'Get all ToDos');
-    let query = HelpTicket.find();
+    let query = ToDos.find();
 query.sort(req.query.order)
     await query.exec().then(result => {
         res.status(200).json(result);
@@ -14,7 +14,7 @@ query.sort(req.query.order)
 //added in from authentication lessons
 router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
     logger.log('info', 'Get all ToDos');
-    let query = HelpTicket.find();
+    let query = ToDos.find();
     query.sort(req.query.order)
     if(req.query.status){
         if(req.query.status[0] == '-'){
@@ -32,15 +32,15 @@ router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
 //added in from authentication lessons
 router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
     logger.log('info', 'Get all ToDos');
-    let query = HelpTicket.find();
+    let query = ToDos.find();
     query.sort(req.query.order)
+    /*
     .populate({path: 'personId', model: 'User', select: 'lastName firstName fullName'} )
     .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
-/*
-    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
-    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
-    .populate({path: 'ownerId', model: 'User', select: 'lastName firstName fullName'} );
 */
+    .populate({path: 'todo'} )
+    .populate({path: 'priority'})
+    .populate({path: 'done'});
 }));
 
 //add schema .json files (Help Ticket API)
@@ -53,7 +53,7 @@ router.get('/users/:id', requireAuth, asyncHandler(async (req, res) => {
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    var path = config.uploads + '/helpTickets';
+    var path = config.uploads + '/ToDoss';
     mkdirp(path, function(err) {
             if(err){
                 res.status(500).json(err);
