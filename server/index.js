@@ -49,5 +49,7 @@ var port = process.env.port || 5000;//change to 5000 when connecting to logger.l
 require('./config/express')(app, config);
 
 require('http').createServer(app).listen(port, function () {
-    logger.log("HTTP Server listening on port: %d, in %s mode", config.port, app.get('env'));
+    logger.log('info',"HTTP Server listening on port: %d, in %s mode", config.port, app.get('env'));
 });
+
+module.exports = app;
