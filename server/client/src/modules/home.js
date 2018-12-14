@@ -21,7 +21,7 @@ export class Home {
 //is the second route:
 { route: 'users'; moduleId: './modules/users'; name: 'Users' }
 
-<template>
+/*<template>
 <h1>${message}</h1>
 
-</template>
+</template>*/
