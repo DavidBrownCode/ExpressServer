@@ -30,16 +30,16 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-env');
 
     grunt.registerTask('default', [
-    'env:dev',
-    //added to original copied text
-    'nodemon',
-    'jshint',
-    ]);
+        'env:dev',
+        //added to original copied text
+        'nodemon',
+        'jshint'
+    ]),
 
     grunt.registerTask('production', [
-    'env:production',
-    //added to original copied text
-    'nodemon'
-]);
+        'env:production',
+        //added to original copied text
+        'nodemon'
+    ]);
 
 };
