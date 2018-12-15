@@ -57,5 +57,57 @@ module.exports = function (app, config) {
         res.send('500 Sever Error');
     });
     console.log("Starting application");*/
+    var models = glob.sync(config.root + '/app/models/*.js');
+    models.forEach(function (model) {
+      require(model);
+    });
+  
+
+    var controllers = glob.sync(config.root + '/app/controllers/*.js');
+    controllers.forEach(function (controller) {
+      require(controller)(app, config);
+    });
+
+    app.get('/willwork',
+    function (req, res, next) {
+      res.set('X-One', 'One');
+      next();
+    },
+    function (req, res, next) {
+      res.set('X-Two', 'Two');
+      next();
+    },
+    function (req, res) {
+      res.send("Three");
+    }
+  );
+
+
+
+
+
+
+
+    app.use(function (req, res) {
+        logger.log('error', 'File not found');
+        res.type('text/plan');
+        res.status(404);
+        res.send('404 Not Found');
+    });
+    app.use(function (err, req, res, next) {
+        console.log(err);
+        if (process.env.NODE_ENV !== 'test') logger.log(err.stack, 'error');
+        res.type('text/plan');
+        if (err.status) {
+          res.status(err.status).send(err.message);
+        } else {
+          res.status(500).send('500 Sever Error');
+        }
+    });
+    
+    
+    
+    logger.log('info', "Starting application");
     
 };
+
