@@ -1,0 +1,13 @@
+h1 {
+    color: magenta;
+}
+#right{
+    float:right;
+    color:green;
+    text-size:1.2em;
+}
+#left{
+    float:left;
+    color:green;
+    text-size:.8em;
+}
