@@ -32,8 +32,8 @@ module.exports = function(grunt){
     grunt.registerTask('default', [
         'env:dev',
         //added to original copied text
-        'nodemon',
         'jshint',
+        'nodemon',
     ]),
 
     grunt.registerTask('production', [
